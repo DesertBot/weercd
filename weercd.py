@@ -370,15 +370,15 @@ class Client:  # pylint: disable=too-many-instance-attributes
         if self.quit:
             return
 
-        # send commands from file (which can be stdin)
-        if self.args.file:
-            self.send_file()
-            return
-
         # wait a bit
         if self.args.wait > 0:
             print(f'Waiting {self.args.wait} seconds')
             time.sleep(self.args.wait)
+
+        # send commands from file (which can be stdin)
+        if self.args.file:
+            self.send_file()
+            return
 
         # flood the client
         sys.stdout.write('Flooding client..')
